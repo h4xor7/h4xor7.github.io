@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+            align-items: start;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-content h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .profile-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .interest-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Card Section */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #222222 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .card-subtitle {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .date-badge {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .card p {
+            color: #b0b0b0;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .card ul {
+            margin-left: 20px;
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+
+        .card ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Horizontal Card */
+        .horizontal-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #222222 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .horizontal-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .card-content h4 {
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .badge {
+            background: rgba(100, 150, 255, 0.15);
+            color: #64a0ff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(100, 150, 255, 0.3);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 1.3rem;
+            color: #fff;
+            margin: 40px 0 20px 0;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e0e0e0;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: rgba(100, 150, 255, 0.2);
+            border-color: rgba(100, 150, 255, 0.4);
+            color: #64a0ff;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .profile-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                margin: 0 auto;
+                font-size: 60px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .horizontal-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <div class="profile-image">
+                <i class="fab fa-android"></i>
+            </div>
+            <div class="profile-content">
+                <h1>Your Name</h1>
+                <p>I'm a passionate Android developer with 5+ years of experience creating modern, intuitive mobile applications. Specialized in Kotlin, Jetpack Compose, and building high-performance apps that solve real-world problems.</p>
+                
+                <div class="interests">
+                    <span class="interest-tag"><i class="fas fa-mobile-alt"></i> Mobile Dev</span>
+                    <span class="interest-tag"><i class="fas fa-gamepad"></i> Game Dev</span>
+                    <span class="interest-tag"><i class="fas fa-code"></i> Open Source</span>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience & Education -->
+        <div class="cards-grid">
+            <!-- Experience -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Freelancer</h3>
+                        <p class="card-subtitle">Android Developer</p>
+                    </div>
+                    <span class="date-badge">2021 - now</span>
+                </div>
+                <ul>
+                    <li>Built 20+ production Android apps deployed on Google Play Store</li>
+                    <li>Collaborated with startups and enterprises across multiple countries</li>
+                    <li>Specialized in Kotlin, MVVM architecture, and Firebase integration</li>
+                    <li>Maintained 4.5+ star ratings across all published apps</li>
+                </ul>
+            </div>
+
+            <!-- Previous Experience -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Senior Developer</h3>
+                        <p class="card-subtitle">Tech Company</p>
+                    </div>
+                    <span class="date-badge">2020 - 2021</span>
+                </div>
+                <ul>
+                    <li>Led mobile team in developing enterprise Android applications</li>
+                    <li>Mentored junior developers and conducted code reviews</li>
+                    <li>Implemented real-time features using WebSockets and Firebase</li>
+                    <li>Improved app performance, reducing crash rate by 45%</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <h2 class="section-title"><i class="fas fa-tools"></i> Technical Skills</h2>
+        
+        <div class="horizontal-card">
+            <div class="card-icon">
+                <i class="fab fa-android" style="color: #3DDC84;"></i>
+            </div>
+            <div class="card-content">
+                <h4>Languages & Frameworks</h4>
+                <div class="badge-group">
+                    <span class="badge">Kotlin</span>
+                    <span class="badge">Java</span>
+                    <span class="badge">Jetpack Compose</span>
+                    <span class="badge">XML Layouts</span>
+                    <span class="badge">MVVM</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="horizontal-card">
+            <div class="card-icon">
+                <i class="fas fa-database" style="color: #FFB300;"></i>
+            </div>
+            <div class="card-content">
+                <h4>Data & Backend</h4>
+                <div class="badge-group">
+                    <span class="badge">Firebase</span>
+                    <span class="badge">Room Database</span>
+                    <span class="badge">SQLite</span>
+                    <span class="badge">REST APIs</span>
+                    <span class="badge">Retrofit</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="horizontal-card">
+            <div class="card-icon">
+                <i class="fas fa-tools" style="color: #FF6B6B;"></i>
+            </div>
+            <div class="card-content">
+                <h4>Tools & Libraries</h4>
+                <div class="badge-group">
+                    <span class="badge">Android Studio</span>
+                    <span class="badge">Git</span>
+                    <span class="badge">Firebase Analytics</span>
+                    <span class="badge">JUnit/Espresso</span>
+                    <span class="badge">Dagger Hilt</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Graduation</h3>
+                        <p class="card-subtitle">Bachelor's in Computer Science</p>
+                    </div>
+                    <span class="date-badge">2018</span>
+                </div>
+                <p>University Name, City</p>
+                <p style="color: #888; font-size: 0.9rem;">GPA: 3.8/4.0</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Certifications</h3>
+                        <p class="card-subtitle">Professional Development</p>
+                    </div>
+                    <span class="date-badge">2020-2023</span>
+                </div>
+                <ul>
+                    <li>Android Developer Associate by Google</li>
+                    <li>Advanced Kotlin Programming</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Featured Projects -->
+        <h2 class="section-title"><i class="fas fa-project-diagram"></i> Featured Projects</h2>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <h3>ShopEase</h3>
+                <p class="card-subtitle">E-Commerce Mobile App</p>
+                <p>A full-featured e-commerce platform with real-time inventory management, secure payment integration, and personalized recommendations.</p>
+                <div class="badge-group" style="margin-top: 15px;">
+                    <span class="badge">Kotlin</span>
+                    <span class="badge">Firebase</span>
+                    <span class="badge">Jetpack</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>FitTrack</h3>
+                <p class="card-subtitle">Health & Fitness App</p>
+                <p>Comprehensive fitness tracking application with wearable integration, health insights, workout plans, and social features.</p>
+                <div class="badge-group" style="margin-top: 15px;">
+                    <span class="badge">Jetpack Compose</span>
+                    <span class="badge">Room DB</span>
+                    <span class="badge">Sensors</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>NewsHub</h3>
+                <p class="card-subtitle">News & Media App</p>
+                <p>Modern news aggregator with real-time updates, personalized feeds, offline reading, and social sharing capabilities.</p>
+                <div class="badge-group" style="margin-top: 15px;">
+                    <span class="badge">REST API</span>
+                    <span class="badge">MVVM</span>
+                    <span class="badge">Room</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2024 Your Name. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
